@@ -1,0 +1,17 @@
+version: '2.0'
+services:
+  db:
+    image: rethinkdb
+    volumes_from:
+      - dbData
+
+  dbData:
+    image: busybox
+    volumes:
+      - /data
+    command: echo Data Volume for db
+
+  web:
+    ports:
+      - '8080'
+    image: nicolasmassouh/houmous:develop
